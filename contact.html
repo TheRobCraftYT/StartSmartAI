@@ -65,7 +65,7 @@
 
 <div class="container">
     <h2>Gib bitte deine Kontaktdaten ein</h2>
-    <form action="success.html" method="get">
+    <form id="contact-form">
         <div class="question">
             <label for="full-name">Vollständiger Name</label>
             <input type="text" id="full-name" placeholder="Dein Name" required>
@@ -85,6 +85,16 @@
         <button type="submit">Absenden</button>
     </form>
 </div>
+
+<script>
+    // Diese Funktion wird beim Absenden des Formulars aufgerufen
+    document.querySelector('#contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Verhindert das normale Absenden des Formulars
+
+        // Weiterleitung zur Erfolg-Seite
+        window.location.href = 'success.html';
+    });
+</script>
 
 </body>
 </html>
