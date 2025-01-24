@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #F1F8E9;
+            background: #E8F5E9;
             color: #333;
         }
         header {
@@ -65,26 +65,42 @@
 
 <div class="container">
     <h2>Gib bitte deine Kontaktdaten ein</h2>
-    <form>
+    <form id="contact-form">
         <div class="question">
             <label for="full-name">Vollständiger Name</label>
-            <input type="text" id="full-name" placeholder="Dein Name">
+            <input type="text" id="full-name" placeholder="Dein Name" required>
         </div>
         <div class="question">
             <label for="number-of-employees">Anzahl der Mitarbeiter</label>
-            <input type="number" id="number-of-employees" placeholder="Anzahl der Mitarbeiter">
+            <input type="number" id="number-of-employees" placeholder="Anzahl der Mitarbeiter" required>
         </div>
         <div class="question">
             <label for="salary">Durchschnittlicher Lohn</label>
-            <input type="number" id="salary" placeholder="Durchschnittlicher Lohn (€)">
+            <input type="number" id="salary" placeholder="Durchschnittlicher Lohn (€)" required>
         </div>
         <div class="question">
             <label for="email">E-Mail-Adresse</label>
-            <input type="email" id="email" placeholder="Deine E-Mail-Adresse">
+            <input type="email" id="email" placeholder="Deine E-Mail-Adresse" required>
         </div>
         <button type="submit">Absenden</button>
     </form>
 </div>
+
+<script>
+    // Diese Funktion wird beim Absenden des Formulars aufgerufen
+    document.querySelector('#contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Verhindert die normale Formularübermittlung
+
+        // Speichert die Eingabewerte in localStorage
+        localStorage.setItem('fullName', document.getElementById('full-name').value);
+        localStorage.setItem('numberOfEmployees', document.getElementById('number-of-employees').value);
+        localStorage.setItem('salary', document.getElementById('salary').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+
+        // Leitet den Benutzer zur Erfolgsseite weiter
+        window.location.href = 'success.html';
+    });
+</script>
 
 </body>
 </html>
