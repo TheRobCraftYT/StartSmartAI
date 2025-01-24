@@ -132,6 +132,8 @@
     <!-- Ergebnisanzeige -->
     <div id="result" class="result" style="display: none;">
         <p><strong>Vorgeschlagener Name:</strong> <span id="startup-name"></span></p>
+        <button onclick="acceptName()">Akzeptieren</button>
+        <button onclick="generateNewName()">Nicht akzeptieren (Neuen Namen generieren)</button>
     </div>
 </div>
 
@@ -169,6 +171,20 @@
         // Ergebnis anzeigen
         document.getElementById('startup-name').textContent = name;
         document.getElementById('result').style.display = "block";
+    }
+
+    // Akzeptieren des Namens und Weiterleitung zur Kontaktseite
+    function acceptName() {
+        window.location.href = "contact.html";
+    }
+
+    // Generiere einen neuen Namen
+    function generateNewName() {
+        const names = [
+            "ShopNova Global", "Consultify Pro", "Innovative Solutions", "GreenPlanet Foods", "Visionary Minds"
+        ];
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        document.getElementById('startup-name').textContent = randomName;
     }
 </script>
 
