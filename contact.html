@@ -65,7 +65,7 @@
 
 <div class="container">
     <h2>Gib bitte deine Kontaktdaten ein</h2>
-    <form id="contact-form">
+    <form action="success.html" method="get">
         <div class="question">
             <label for="full-name">Vollständiger Name</label>
             <input type="text" id="full-name" placeholder="Dein Name" required>
@@ -85,22 +85,6 @@
         <button type="submit">Absenden</button>
     </form>
 </div>
-
-<script>
-    // Diese Funktion wird beim Absenden des Formulars aufgerufen
-    document.querySelector('#contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();  // Verhindert die normale Formularübermittlung
-
-        // Speichert die Eingabewerte in localStorage
-        localStorage.setItem('fullName', document.getElementById('full-name').value);
-        localStorage.setItem('numberOfEmployees', document.getElementById('number-of-employees').value);
-        localStorage.setItem('salary', document.getElementById('salary').value);
-        localStorage.setItem('email', document.getElementById('email').value);
-
-        // Leitet den Benutzer zur Erfolgsseite weiter
-        window.location.href = 'success.html';
-    });
-</script>
 
 </body>
 </html>
