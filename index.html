@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #4CAF50, #81C784, #A5D6A7);
+            background: #E8F5E9;
             color: #333;
         }
         header {
@@ -26,7 +26,7 @@
             max-width: 800px;
             margin: 3rem auto;
             padding: 2rem;
-            background: #F1F8E9;
+            background: white;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             text-align: center;
@@ -34,7 +34,7 @@
         .question {
             margin: 1.5rem 0;
         }
-        select, input[type="text"], input[type="password"], button {
+        select, input[type="text"], input[type="number"], button {
             width: 100%;
             padding: 0.8rem;
             margin-top: 0.5rem;
@@ -50,142 +50,89 @@
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-top: 1rem;
         }
         button:hover {
             background: #2E7D32;
         }
-        .result {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: #81C784;
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
     </style>
 </head>
 <body>
 
-<!-- Pseudo-Anmeldescreen -->
-<div id="login-screen" class="container">
-    <h2>Anmeldung</h2>
-    <p>Geben Sie Ihre Anmeldedaten ein, um fortzufahren:</p>
-    <input type="text" id="username" placeholder="Benutzername">
-    <input type="password" id="password" placeholder="Passwort">
-    <button onclick="showMainScreen()">Anmelden</button>
-</div>
+<header>
+    Willkommen bei StartSmart AI
+</header>
 
-<!-- Hauptseite (versteckt, bis man sich "anmeldet") -->
-<div id="main-screen" class="container" style="display: none;">
-    <h2>Starte dein Unternehmen</h2>
-    <p>Wähle die passenden Optionen aus, um den besten Namen für dein Start-up zu finden:</p>
+<div class="container">
+    <h2>Bitte beantworte die Fragen zur Unternehmensgründung</h2>
+    <form id="business-form">
+        <!-- Frage 1: Unternehmensname -->
+        <div class="question">
+            <label for="business-name">Wähle einen Unternehmensnamen</label>
+            <select id="business-name">
+                <option value="Mustername">Mustername</option>
+                <option value="TechNova">TechNova</option>
+                <option value="FutureWave">FutureWave</option>
+                <option value="CodeSpark">CodeSpark</option>
+            </select>
+        </div>
 
-    <!-- Dropdown Fragen -->
-    <div class="question">
-        <label for="startup-type">Was möchtest du machen?</label>
-        <select id="startup-type">
-            <option value="ecommerce">E-Commerce</option>
-            <option value="consulting">Beratung</option>
-            <option value="app">App-Entwicklung</option>
-            <option value="food">Gastronomie</option>
-            <option value="agency">Kreativagentur</option>
-            <option value="other">Sonstiges</option>
-        </select>
-    </div>
+        <!-- Frage 2: Unternehmensbereich -->
+        <div class="question">
+            <label for="business-area">Wähle einen Unternehmensbereich</label>
+            <select id="business-area">
+                <option value="IT-Beratung">IT-Beratung</option>
+                <option value="Software-Entwicklung">Software-Entwicklung</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finanzdienstleistungen">Finanzdienstleistungen</option>
+            </select>
+        </div>
 
-    <div class="question">
-        <label for="brand-style">Welche Stimmung soll deine Marke ausdrücken?</label>
-        <select id="brand-style">
-            <option value="modern">Modern</option>
-            <option value="creative">Kreativ</option>
-            <option value="trustworthy">Vertrauenswürdig</option>
-            <option value="playful">Verspielt</option>
-        </select>
-    </div>
+        <!-- Frage 3: Markenstil -->
+        <div class="question">
+            <label for="brand-style">Wähle einen Markenstil</label>
+            <select id="brand-style">
+                <option value="Modern und innovativ">Modern und innovativ</option>
+                <option value="Traditionell und seriös">Traditionell und seriös</option>
+                <option value="Luxuriös und exklusiv">Luxuriös und exklusiv</option>
+                <option value="Kreativ und unkonventionell">Kreativ und unkonventionell</option>
+            </select>
+        </div>
 
-    <div class="question">
-        <label for="focus">Welches ist dein Hauptfokus?</label>
-        <select id="focus">
-            <option value="innovation">Innovation</option>
-            <option value="service">Kundendienst</option>
-            <option value="tech">Technologie</option>
-            <option value="sustainability">Nachhaltigkeit</option>
-        </select>
-    </div>
+        <!-- Frage 4: Unternehmensfokus -->
+        <div class="question">
+            <label for="business-focus">Wähle den Hauptfokus deines Unternehmens</label>
+            <select id="business-focus">
+                <option value="Softwareentwicklung">Softwareentwicklung</option>
+                <option value="Beratung">Beratung</option>
+                <option value="E-Commerce">E-Commerce</option>
+                <option value="Digitales Marketing">Digitales Marketing</option>
+            </select>
+        </div>
 
-    <div class="question">
-        <label for="region">In welcher Region möchtest du starten?</label>
-        <select id="region">
-            <option value="europe">Europa</option>
-            <option value="asia">Asien</option>
-            <option value="america">Amerika</option>
-            <option value="africa">Afrika</option>
-        </select>
-    </div>
+        <!-- Frage 5: Unternehmensregion -->
+        <div class="question">
+            <label for="business-region">Wähle die Region, in der dein Unternehmen tätig ist</label>
+            <select id="business-region">
+                <option value="Berlin">Berlin</option>
+                <option value="Hamburg">Hamburg</option>
+                <option value="München">München</option>
+                <option value="Frankfurt">Frankfurt</option>
+            </select>
+        </div>
 
-    <button onclick="displayResult()">Ergebnisse anzeigen</button>
-
-    <!-- Ergebnisanzeige -->
-    <div id="result" class="result" style="display: none;">
-        <p><strong>Vorgeschlagener Name:</strong> <span id="startup-name"></span></p>
-        <button onclick="acceptName()">Akzeptieren</button>
-        <button onclick="generateNewName()">Nicht akzeptieren (Neuen Namen generieren)</button>
-    </div>
+        <button type="submit">Absenden</button>
+    </form>
 </div>
 
 <script>
-    // Funktion: Wechsel vom Anmelde- zum Hauptbildschirm
-    function showMainScreen() {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('main-screen').style.display = 'block';
-    }
+    // Diese Funktion wird beim Absenden des Formulars aufgerufen
+    document.querySelector('#business-form').addEventListener('submit', function(event) {
+        event.preventDefault();  // Verhindert das normale Absenden des Formulars
 
-    // Funktion: Zeigt das Ergebnis basierend auf den Auswahlmöglichkeiten
-    function displayResult() {
-        const type = document.getElementById('startup-type').value;
-        const style = document.getElementById('brand-style').value;
-        const focus = document.getElementById('focus').value;
-        const region = document.getElementById('region').value;
-
-        // Vorschläge basierend auf den ausgewählten Optionen
-        let name = "";
-
-        if (type === "ecommerce" && style === "modern" && focus === "innovation" && region === "europe") {
-            name = "ShopNova Europe";
-        } else if (type === "consulting" && style === "trustworthy" && focus === "service" && region === "america") {
-            name = "TrustPoint USA";
-        } else if (type === "app" && style === "creative" && focus === "tech" && region === "asia") {
-            name = "AppVisionary Asia";
-        } else if (type === "food" && style === "playful" && focus === "sustainability" && region === "africa") {
-            name = "GreenBites Africa";
-        } else if (type === "agency" && style === "modern" && focus === "creative" && region === "europe") {
-            name = "ModernMinds EU";
-        } else {
-            name = "Global Innovators";
-        }
-
-        // Ergebnis anzeigen
-        document.getElementById('startup-name').textContent = name;
-        document.getElementById('result').style.display = "block";
-    }
-
-    // Akzeptieren des Namens und Weiterleitung zur Kontaktseite
-    function acceptName() {
-        window.location.href = "contact.html";
-    }
-
-    // Generiere einen neuen Namen
-    function generateNewName() {
-        const names = [
-            "ShopNova Global", "Consultify Pro", "Innovative Solutions", "GreenPlanet Foods", "Visionary Minds"
-        ];
-        const randomName = names[Math.floor(Math.random() * names.length)];
-        document.getElementById('startup-name').textContent = randomName;
-    }
+        // Weiterleitung zur Erfolg-Seite
+        window.location.href = 'success.html';
+    });
 </script>
 
 </body>
