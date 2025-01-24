@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erfolg - StartSmart AI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #E8F5E9;
+            color: #333;
+        }
+        header {
+            background-color: #388E3C;
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            border-bottom: 5px solid #2E7D32;
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .question {
+            margin: 1.5rem 0;
+        }
+        .result {
+            padding: 1.5rem;
+            background-color: #81C784;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .message {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 2rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Erfolgsbestätigung - StartSmart AI
+</header>
+
+<div class="container">
+    <h2>Dein Unternehmensprofil</h2>
+    <div class="result">
+        <p><strong>Unternehmensname:</strong> <span id="final-name"></span></p>
+        <p><strong>Unternehmensbereich:</strong> <span id="final-type"></span></p>
+        <p><strong>Markenstil:</strong> <span id="final-style"></span></p>
+        <p><strong>Hauptfokus:</strong> <span id="final-focus"></span></p>
+        <p><strong>Region:</strong> <span id="final-region"></span></p>
+    </div>
+
+    <div class="message">
+        <p>Unser KI-System kümmert sich jetzt darum, dein Unternehmen einzurichten.</p>
+        <p>Bitte habe einen Moment Geduld, während wir die nächsten Schritte für dich vorbereiten!</p>
+    </div>
+</div>
+
+<script>
+    // Hier nehmen wir die Eingaben aus der URL oder den vorherigen Seiten und füllen die Daten aus
+    // Diese Daten könnten durch JavaScript in einer echten Anwendung gespeichert werden (z.B. über LocalStorage)
+    document.getElementById('final-name').textContent = localStorage.getItem('startupName');
+    document.getElementById('final-type').textContent = localStorage.getItem('startupType');
+    document.getElementById('final-style').textContent = localStorage.getItem('brandStyle');
+    document.getElementById('final-focus').textContent = localStorage.getItem('startupFocus');
+    document.getElementById('final-region').textContent = localStorage.getItem('startupRegion');
+</script>
+
+</body>
+</html>
