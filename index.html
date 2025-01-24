@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StartSmart AI</title>
+    <title>StartSmart AI - Anmeldung</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -64,26 +64,73 @@
 </header>
 
 <div class="container">
-    <h2>Bitte melde dich an, um fortzufahren</h2>
-    <form id="login-form">
+    <h2>Bitte beantworte die Fragen zur Unternehmensgründung</h2>
+    <form id="business-form">
+        <!-- Frage 1: Unternehmensname -->
         <div class="question">
-            <label for="username">Benutzername</label>
-            <input type="text" id="username" placeholder="Benutzername" required>
+            <label for="business-name">Wähle einen Unternehmensnamen</label>
+            <select id="business-name">
+                <option value="Mustername">Mustername</option>
+                <option value="TechNova">TechNova</option>
+                <option value="FutureWave">FutureWave</option>
+                <option value="CodeSpark">CodeSpark</option>
+            </select>
         </div>
+
+        <!-- Frage 2: Unternehmensbereich -->
         <div class="question">
-            <label for="password">Passwort</label>
-            <input type="password" id="password" placeholder="Passwort" required>
+            <label for="business-area">Wähle einen Unternehmensbereich</label>
+            <select id="business-area">
+                <option value="IT-Beratung">IT-Beratung</option>
+                <option value="Software-Entwicklung">Software-Entwicklung</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finanzdienstleistungen">Finanzdienstleistungen</option>
+            </select>
         </div>
-        <button type="submit">Anmelden</button>
+
+        <!-- Frage 3: Markenstil -->
+        <div class="question">
+            <label for="brand-style">Wähle einen Markenstil</label>
+            <select id="brand-style">
+                <option value="Modern und innovativ">Modern und innovativ</option>
+                <option value="Traditionell und seriös">Traditionell und seriös</option>
+                <option value="Luxuriös und exklusiv">Luxuriös und exklusiv</option>
+                <option value="Kreativ und unkonventionell">Kreativ und unkonventionell</option>
+            </select>
+        </div>
+
+        <!-- Frage 4: Unternehmensfokus -->
+        <div class="question">
+            <label for="business-focus">Wähle den Hauptfokus deines Unternehmens</label>
+            <select id="business-focus">
+                <option value="Softwareentwicklung">Softwareentwicklung</option>
+                <option value="Beratung">Beratung</option>
+                <option value="E-Commerce">E-Commerce</option>
+                <option value="Digitales Marketing">Digitales Marketing</option>
+            </select>
+        </div>
+
+        <!-- Frage 5: Unternehmensregion -->
+        <div class="question">
+            <label for="business-region">Wähle die Region, in der dein Unternehmen tätig ist</label>
+            <select id="business-region">
+                <option value="Berlin">Berlin</option>
+                <option value="Hamburg">Hamburg</option>
+                <option value="München">München</option>
+                <option value="Frankfurt">Frankfurt</option>
+            </select>
+        </div>
+
+        <button type="submit">Absenden</button>
     </form>
 </div>
 
 <script>
-    // Diese Funktion wird beim Absenden des Anmeldeformulars aufgerufen
-    document.querySelector('#login-form').addEventListener('submit', function(event) {
+    // Diese Funktion wird beim Absenden des Formulars aufgerufen
+    document.querySelector('#business-form').addEventListener('submit', function(event) {
         event.preventDefault();  // Verhindert das normale Absenden des Formulars
 
-        // Nach erfolgreicher Anmeldung wird der Benutzer auf die Business-Seite weitergeleitet
+        // Weiterleitung zur Kontakt-Seite
         window.location.href = 'contact.html';
     });
 </script>
