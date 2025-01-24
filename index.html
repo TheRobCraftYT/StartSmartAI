@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartSmart AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: #333;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #4CAF50;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #4CAF50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .anmeldung {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .anmeldung input {
+            margin: 0.5rem 0;
+            padding: 0.7rem;
+            width: 90%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .anmeldung button {
+            padding: 0.8rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .anmeldung button:hover {
+            background-color: #45a049;
+        }
+        .question {
+            margin: 1.5rem 0;
+        }
+        select, input[type="text"], button {
+            width: 100%;
+            padding: 0.7rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f4f4f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Willkommen bei StartSmart AI</h1>
+</header>
+
+<div id="login" class="container anmeldung">
+    <h2>Anmeldung</h2>
+    <p>Bitte melde dich an, um fortzufahren:</p>
+    <input type="text" placeholder="Benutzername" required>
+    <input type="password" placeholder="Passwort" required>
+    <button onclick="login()">Anmelden</button>
+</div>
+
+<div id="main" class="container" style="display: none;">
+    <h2>Starte dein Start-up</h2>
+    <form id="startup-form">
+        <div class="question">
+            <label for="startup-type">Was möchtest du machen?</label>
+            <select id="startup-type">
+                <option value="ecommerce">E-Commerce</option>
+                <option value="consulting">Beratung</option>
+                <option value="app">App-Entwicklung</option>
+                <option value="food">Gastronomie</option>
+                <option value="agency">Kreativagentur</option>
+                <option value="other">Sonstiges</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="target-audience">Für wen ist dein Produkt gedacht?</label>
+            <select id="target-audience">
+                <option value="b2b">B2B (Business-to-Business)</option>
+                <option value="b2c">B2C (Business-to-Consumer)</option>
+                <option value="both">Beides</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="budget">Wie hoch ist dein Budget?</label>
+            <select id="budget">
+                <option value="low">Unter 1.000 €</option>
+                <option value="medium">1.000 – 5.000 €</option>
+                <option value="high">Über 5.000 €</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="location">Wo möchtest du starten?</label>
+            <select id="location">
+                <option value="online">Online</option>
+                <option value="city">In einer Stadt</option>
+                <option value="hybrid">Hybrid</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="legal-form">Welche Rechtsform möchtest du wählen?</label>
+            <select id="legal-form">
+                <option value="sole">Einzelunternehmen</option>
+                <option value="gmbh">GmbH</option>
+                <option value="ug">UG (haftungsbeschränkt)</option>
+                <option value="other">Andere</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="focus">Welches ist dein Hauptfokus?</label>
+            <select id="focus">
+                <option value="innovation">Innovation</option>
+                <option value="service">Kundendienst</option>
+                <option value="tech">Technologie</option>
+                <option value="sustainability">Nachhaltigkeit</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="brand">Welche Stimmung soll deine Marke ausdrücken?</label>
+            <select id="brand">
+                <option value="modern">Modern</option>
+                <option value="creative">Kreativ</option>
+                <option value="trustworthy">Vertrauenswürdig</option>
+                <option value="playful">Verspielt</option>
+            </select>
+        </div>
+        <button type="button" onclick="generateResults()">Ergebnisse anzeigen</button>
+    </form>
+
+    <div id="results" class="result" style="display: none;">
+        <h3>Dein Start-up Vorschlag:</h3>
+        <p><strong>Name:</strong> <span id="startup-name">[Name wird generiert]</span></p>
+        <p><strong>Logo:</strong> <span id="startup-logo">[Logo wird generiert]</span></p>
+    </div>
+</div>
+
+<script>
+    function login() {
+        // Simuliere einen erfolgreichen Login
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+    }
+
+    function generateResults() {
+        // Simulierte KI-generierte Ergebnisse
+        const name = "InnovSmart";
+        const logo = "🌟 [Dein Logo] 🌟";
+
+        document.getElementById("startup-name").textContent = name;
+        document.getElementById("startup-logo").textContent = logo;
+        document.getElementById("results").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
