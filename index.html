@@ -59,6 +59,9 @@
             text-align: left;
             margin-top: 2rem;
         }
+        .confirmation-container {
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +88,7 @@
     <hr>
 
     <!-- Unternehmensfragen -->
-    <form id="business-form">
+    <form id="business-form" style="display:none;">
         <div class="question">
             <label for="business-name">Wähle einen Unternehmensnamen</label>
             <select id="business-name">
@@ -138,6 +141,14 @@
 
         <button type="submit">Absenden</button>
     </form>
+
+    <!-- Unternehmensname Bestätigung -->
+    <div id="confirmation-container" class="confirmation-container" style="display:none;">
+        <h3>Dein Unternehmensname:</h3>
+        <p id="generated-name"></p>
+        <button id="accept-name">Akzeptieren</button>
+        <button id="reject-name">Abbrechen</button>
+    </div>
 </div>
 
 <script>
@@ -151,17 +162,44 @@
         // Hier könnte man eine richtige Login-Logik einbauen, für die Demo bleibt es pseudomäßig
         if (username && password) {
             alert('Erfolgreich eingeloggt!');
+            document.querySelector('#business-form').style.display = 'block'; // Zeigt das Formular für die Unternehmensfragen
         } else {
             alert('Bitte gib einen Benutzernamen und ein Passwort ein.');
         }
     });
 
-    // Weiterleitung zur Kontakt-Seite
+    // Unternehmensname generieren und Bestätigung anzeigen
     document.querySelector('#business-form').addEventListener('submit', function(event) {
-        event.preventDefault();  // Verhindert das normale Absenden des Formulars
+        event.preventDefault();
 
-        // Weiterleitung zur Kontakt-Seite
-        window.location.href = 'contact.html';
+        // Unternehmensname wird basierend auf der Auswahl generiert
+        const name = document.querySelector('#business-name').value;
+        const area = document.querySelector('#business-area').value;
+        const style = document.querySelector('#brand-style').value;
+        const focus = document.querySelector('#business-focus').value;
+        const region = document.querySelector('#business-region').value;
+
+        // Name und Details anzeigen
+        document.querySelector('#generated-name').textContent = name;
+
+        // Versteckt das Formular und zeigt die Bestätigung an
+        document.querySelector('#business-form').style.display = 'none';
+        document.querySelector('#confirmation-container').style.display = 'block';
+    });
+
+    // Akzeptieren des Namens und Weiterleitung
+    document.querySelector('#accept-name').addEventListener('click', function() {
+        window.location.href = 'contact.html';  // Weiterleitung zur Kontakt-Seite
+    });
+
+    // Ablehnen des Namens und Zufallsname generieren
+    document.querySelector('#reject-name').addEventListener('click', function() {
+        // Zufallsname (Hier kann man die Liste mit eigenen Werten erweitern)
+        const randomNames = ['TechNova', 'FutureWave', 'CodeSpark', 'InnovateX'];
+        const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
+
+        // Neuer Name anzeigen
+        document.querySelector('#generated-name').textContent = randomName;
     });
 </script>
 
